@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
+    private Button testbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +29,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+       testbutton = findViewById(R.id.testbuttoon);
+       testbutton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent i = new Intent(getApplicationContext(),SMSActivity.class);
+               startActivity(i);
+           }
+       });
     }
 }
