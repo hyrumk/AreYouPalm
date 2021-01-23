@@ -3,6 +3,8 @@ buildscript {
     repositories {
         google()
         jcenter()
+        // 카카오 SDK repository 설정
+        // https://developers.kakao.com/docs/latest/ko/getting-started/sdk-android#select-module
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
