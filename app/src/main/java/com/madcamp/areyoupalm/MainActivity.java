@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ImageButton bt_addAlarm = (ImageButton)findViewById(R.id.bt_addAlarm);
         bt_addAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
