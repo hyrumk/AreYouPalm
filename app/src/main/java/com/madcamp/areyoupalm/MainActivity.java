@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS}, PackageManager.PERMISSION_GRANTED);
+
 
         ImageButton bt_addAlarm = (ImageButton)findViewById(R.id.bt_addAlarm);
         bt_addAlarm.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(addAlarm);
             }
         });
+
+
+
 
 
        testbutton = findViewById(R.id.testbuttoon);
