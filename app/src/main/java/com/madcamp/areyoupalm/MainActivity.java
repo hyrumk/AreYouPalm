@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent addAlarm = new Intent(getApplicationContext(),SetAlarm.class);
+                addAlarm.putExtra("ismodifying",false);
                 startActivity(addAlarm);
             }
         });
