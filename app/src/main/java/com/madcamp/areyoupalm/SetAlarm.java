@@ -1,4 +1,4 @@
-package com.example.areyoupalm;
+package com.madcamp.areyoupalm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
