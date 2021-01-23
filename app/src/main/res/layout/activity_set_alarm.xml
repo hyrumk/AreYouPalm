@@ -29,10 +29,9 @@
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tx_alarm_day"
-                android:layout_width="60dp"
+                android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="TextView" />
+                android:gravity="center_vertical"/>
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -41,14 +40,60 @@
                 android:id="@+id/bt_alarm_calender"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
                 android:background="@drawable/calendar">
             </ImageButton>
         </LinearLayout>
         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_sun"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="일">
+            </CheckBox>
+            <CheckBox
+                android:id="@+id/cb_mon"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="월">
+            </CheckBox>
+            <CheckBox
+                android:id="@+id/cb_tue"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="화">
+            </CheckBox>
+            <CheckBox
+                android:id="@+id/cb_wed"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="수">
+            </CheckBox>
+            <CheckBox
+                android:id="@+id/cb_thu"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="목">
+            </CheckBox>
+            <CheckBox
+                android:id="@+id/cb_fri"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="금">
+            </CheckBox>
+            <CheckBox
+                android:id="@+id/cb_sat"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="토">
+            </CheckBox>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp">
             <EditText
+                android:id="@+id/et_alarm_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="알람 이름">
@@ -56,11 +101,23 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp">
+            <EditText
+                android:id="@+id/et_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="야 자냐?">
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp">
             <Switch
                 android:id="@+id/sw_repeat_alarm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="다시 울림" />
         </LinearLayout>
 
