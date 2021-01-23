@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,15 +20,27 @@ public class SMSActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
+
+        number = findViewById(R.id.number_text);
+        message = findViewById(R.id.message_text);
+        send = findViewById(R.id.sendbutton);
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendSMS(v);
+            }
+        });
     }
 
-    public void onSend(View v){
 
-    }
 
-    public boolean checkPermission(String permission){
-        int check = ContextCompat.checkSelfPermission(this, permission);
-        return (check == PackageManager.PERMISSION_GRANTED);
+    public void sendSMS(View view){
+        String text_to_send = message.getText().toString();
+        String number_to_send = number.getText().toString();
+
+        SmsManager mySmsManager = SmsManager.getDefault();
+        mySmsManager.sendTextMessage(number_to_send, null, text_to_send, null, null);
     }
 
 }
