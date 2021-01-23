@@ -5,6 +5,7 @@ buildscript {
         jcenter()
         // 카카오 SDK repository 설정
         // https://developers.kakao.com/docs/latest/ko/getting-started/sdk-android#select-module
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
