@@ -1,9 +1,11 @@
 package com.madcamp.areyoupalm;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
 import android.view.View;
@@ -15,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.madcamp.areyoupalm.alarm.AlarmHandler;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -87,14 +91,10 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
 
         Button bt_save = (Button) findViewById(R.id.bt_save);
         bt_save.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                System.out.println(alarm_year);
-                System.out.println(alarm_month);
-                System.out.println(alarm_date);
-                System.out.println(alarm_hour);
-                System.out.println(alarm_minute);
-                System.out.println(repeatDays);
+                AlarmHandler.setAlarm(this, requestcode, calendar, booleanarray, name, number, message, music);
             }
         });
     }
