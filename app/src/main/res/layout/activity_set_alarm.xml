@@ -50,6 +50,7 @@
                 android:id="@+id/cb_sun"
                 android:layout_width="57dp"
                 android:layout_height="wrap_content"
+                android:textColor="#FF0000"
                 android:text="일">
             </CheckBox>
             <CheckBox
@@ -86,6 +87,7 @@
                 android:id="@+id/cb_sat"
                 android:layout_width="57dp"
                 android:layout_height="wrap_content"
+                android:textColor="#0000FF"
                 android:text="토">
             </CheckBox>
         </LinearLayout>
