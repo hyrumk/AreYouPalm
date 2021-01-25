@@ -35,6 +35,8 @@ public class AlarmHandler {
                          String number, String message, String music){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(context, AlarmReceiver.class);
+        myIntent.putExtra("id", requestCode);
+        myIntent.putExtra("name", name);
         myIntent.putExtra("day_array", day_array);
         myIntent.putExtra("number", number);
         myIntent.putExtra("message", message);
@@ -85,18 +87,12 @@ public class AlarmHandler {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
 
-        /* 반복하는 alarm에서 다음 요일 받아서 set해야할 때
-        AlarmManager alarm = (AlarmMAnager) Context.getSystemService(Context.ALARM_SERVICE);
-        Calendar timeOff = Calendar.getInstance();
-        int days = Calendar.XXXDAY + (7 - timeOff.get(Calendar.DAY_OF_WEEK)); // how many days until Sunday
-        timeOff.add(Calendar.DATE, days);
-        timeOff.set(Calendar.HOUR, 12);
-        timeOff.set(Calendar.MINUTE, 0);
-        timeOff.set(Calendar.SECOND, 0);
-
-         */
         //<TODO> 특정 일자 대상인지 매주 반복인지 확인 후 set the alarm accordingly, (된듯..?)
     }
+
+    /*
+    Function editAlarm may be replaceable by setAlarm.
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void editAlarm(Context context,
@@ -105,6 +101,8 @@ public class AlarmHandler {
                           String number, String message, String music){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(context, AlarmReceiver.class);
+        myIntent.putExtra("id", requestCode);
+        myIntent.putExtra("name", name);
         myIntent.putExtra("day_array", day_array);
         myIntent.putExtra("number", number);
         myIntent.putExtra("message", message);
@@ -114,6 +112,8 @@ public class AlarmHandler {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), pendingIntent);
         //<TODO> 특정 일자 대상인지 매주 반복인지 확인 후 set the alarm accordingly,
     }
+    */
+
 
     public static void cancelAlarm(Context context, int requestCode){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
