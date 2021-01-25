@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.madcamp.areyoupalm.alarm.AlarmHandler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class SetAlarm extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
@@ -33,6 +35,7 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
     int alarm_minute = 0;
     boolean isDayChecked = false;
     boolean isDateSet =false;
+    boolean isModifying;
     ArrayList<String> repeatDays = new ArrayList<String>();
 
     @Override
@@ -41,7 +44,7 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
         setContentView(R.layout.activity_set_alarm);
 
         Intent intent = getIntent();
-        boolean isModifying= intent.getBooleanExtra("ismodifying",false);
+        isModifying= intent.getBooleanExtra("ismodifying",false);
         if(isModifying){
             System.out.println("이미 저장된 알람을 수정하는 섹션에 진입");
         }
@@ -94,7 +97,40 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                AlarmHandler.setAlarm(this, requestcode, calendar, booleanarray, name, number, message, music);
+
+                int id = getId();
+
+                Calendar calendarToAlarm = Calendar.getInstance();
+                calendarToAlarm.set(alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute);
+
+                boolean[] repeatdays = new boolean[7];
+                Arrays.fill(repeatdays,false);
+                if (repeatDays.contains("일")) {
+                    repeatdays[0] = true;
+                }
+                if (repeatDays.contains("월")) {
+                    repeatdays[1] = true;
+                }
+                if (repeatDays.contains("화")) {
+                    repeatdays[2] = true;
+                }
+                if (repeatDays.contains("수")) {
+                    repeatdays[3] = true;
+                }
+                if (repeatDays.contains("목")) {
+                    repeatdays[4] = true;
+                }
+                if (repeatDays.contains("금")) {
+                    repeatdays[5] = true;
+                }
+                if (repeatDays.contains("토")) {
+                    repeatdays[6] = true;
+                }
+
+                EditText name = (EditText) findViewById(R.id.et_alarm_name);
+                EditText number = (EditText) findViewById(R.id.et_tag);
+                AlarmHandler.setAlarm(this, id, calendarToAlarm, repeatdays, name.getText(), number.getText(), "알람 종료", "music");
+                finish();
             }
         });
     }
@@ -285,5 +321,72 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
             }
         }
         setDateText();
+    }
+
+    public int getId(){
+        String id = "";
+        boolean isRepeat = false;
+        if (repeatDays.size()==7) {
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (repeatDays.contains("일")) {
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (repeatDays.contains("월")) {
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (repeatDays.contains("화")) {
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (repeatDays.contains("수")){
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (repeatDays.contains("목")){
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (repeatDays.contains("금")) {
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (repeatDays.contains("토")){
+            id += "1";
+            isRepeat = true;
+        } else
+            id += "0";
+        if (isRepeat) {
+            id = Integer.toString(Integer.parseInt(id,2));
+        } else {
+            id = Integer.toString(alarm_year - 2020);
+            if(alarm_month<10)
+                id += "0"+ Integer.toString(alarm_month);
+            else
+                id += Integer.toString(alarm_month);
+            if(alarm_date<10)
+                id += "0"+ Integer.toString(alarm_date);
+            else
+                id += Integer.toString(alarm_date);
+        }
+        if(alarm_hour<10)
+            id += "0"+ Integer.toString(alarm_hour);
+        else
+            id += Integer.toString(alarm_hour);
+        if(alarm_minute<10)
+            id += "0"+ Integer.toString(alarm_minute);
+        else
+            id += Integer.toString(alarm_minute);
+        return Integer.parseInt(id);
     }
 }
