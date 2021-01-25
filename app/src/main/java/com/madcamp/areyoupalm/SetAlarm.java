@@ -79,6 +79,9 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                     }
                 }, alarm_year, alarm_month - 1, alarm_date);
                 dialog.getDatePicker().setMinDate(cal.getTimeInMillis());
+                Calendar tempCal = Calendar.getInstance();
+                tempCal.set(2041,11,31);
+                dialog.getDatePicker().setMaxDate(tempCal.getTimeInMillis());
                 dialog.show();
             }
         });
@@ -171,8 +174,7 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
     public void setDateText(){
         String date_text="";
         TextView tx_date = (TextView) findViewById(R.id.tx_alarm_day);
-        if(isDayChecked)
-        {
+        if(isDayChecked) {
             if(repeatDays.size()==7)
                 date_text += "매일";
             else {
@@ -183,64 +185,57 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                     isFirst = false;
                 }
                 if (repeatDays.contains("월")) {
-                    if(isFirst) {
+                    if (isFirst) {
                         date_text += "월";
                         isFirst = false;
-                    }
-                    else
+                    } else
                         date_text += ", 월";
                 }
                 if (repeatDays.contains("화")) {
                     if(isFirst) {
                         date_text += "화";
                         isFirst = false;
-                    }
-                    else
+                    } else
                         date_text += ", 화";
 
                 }
                 if (repeatDays.contains("수")) {
-                    if(isFirst) {
+                    if (isFirst) {
                         date_text += "수";
                         isFirst = false;
-                    }
-                    else
+                    } else
                         date_text += ", 수";
                 }
                 if (repeatDays.contains("목")) {
-                    if(isFirst) {
+                    if (isFirst) {
                         date_text += "목";
                         isFirst = false;
-                    }
-                    else
+                    } else
                         date_text += ", 목";
                 }
                 if (repeatDays.contains("금")) {
-                    if(isFirst) {
+                    if (isFirst) {
                         date_text += "금";
                         isFirst = false;
-                    }
-                    else
+                    } else
                         date_text += ", 금";
                 }
                 if (repeatDays.contains("토")) {
-                    if(isFirst){
+                    if (isFirst){
                         date_text += "토";
                         isFirst = false;
-                    }
-                    else
+                    } else
                         date_text += ", 토";
                 }
             }
 
-        }
-        else{
+        } else {
             if (alarm_year > cal.get(Calendar.YEAR)) {
-                date_text += Integer.toString(alarm_year);
+                date_text += Integer.toString(alarm_year) + "년 ";
             }
-            if(isToday())
+            if (isToday())
                 date_text += "오늘 ";
-            if(isTomorrow())
+            if (isTomorrow())
                 date_text += "내일 ";
             date_text += Integer.toString(alarm_month);
             date_text += "월 ";

@@ -10,7 +10,6 @@ public class AlarmListClass extends Application {
 
     @Override
     public void onCreate() {
-        //전역 변수 초기화
         super.onCreate();
     }
 
@@ -24,7 +23,14 @@ public class AlarmListClass extends Application {
     }
 
     public void removeAlarm(Alarm alarm){
-        alarmList.remove(alarm);
+        for (int i=0;i<alarmList.size();++i)
+        {
+            if (alarmList.get(i).id == alarm.id)
+            {
+                alarmList.remove(i);
+                break;
+            }
+        }
     }
 
     public ArrayList<Alarm> getAlarmList(){
