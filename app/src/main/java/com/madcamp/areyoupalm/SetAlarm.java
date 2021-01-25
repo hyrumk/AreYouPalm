@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -99,9 +100,8 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
             public void onClick(View v) {
 
                 int id = getId();
-
                 Calendar calendarToAlarm = Calendar.getInstance();
-                calendarToAlarm.set(alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute);
+                calendarToAlarm.set(alarm_year, alarm_month - 1, alarm_date, alarm_hour, alarm_minute);
 
                 boolean[] repeatdays = new boolean[7];
                 Arrays.fill(repeatdays,false);
@@ -129,7 +129,12 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
 
                 EditText name = (EditText) findViewById(R.id.et_alarm_name);
                 EditText number = (EditText) findViewById(R.id.et_tag);
-                AlarmHandler.setAlarm(this, id, calendarToAlarm, repeatdays, name.getText(), number.getText(), "알람 종료", "music");
+
+                Alarm alarm = new Alarm(id,alarm_year, alarm_month, alarm_date, alarm_hour,alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays);
+                AlarmListClass alarmListApp = (AlarmListClass) getApplication();
+                alarmListApp.addAlarm(alarm);
+
+                AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays, name.getText().toString(), number.getText().toString(), "알람 종료", "music");
                 finish();
             }
         });

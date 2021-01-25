@@ -9,5 +9,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d("ALARMON", "ALARM IS ON");
+        System.out.println("따르르르르릉");
     }
 }

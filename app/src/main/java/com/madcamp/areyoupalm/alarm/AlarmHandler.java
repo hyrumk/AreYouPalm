@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -41,7 +42,7 @@ public class AlarmHandler {
         myIntent.putExtra("number", number);
         myIntent.putExtra("message", message);
         myIntent.putExtra("music", music);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, myIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         if(Arrays.asList(day_array).contains(true)){// 매주 반복하는 알람
             Calendar today = Calendar.getInstance();
@@ -84,6 +85,8 @@ public class AlarmHandler {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, today.getTimeInMillis(), pendingIntent);
         }
         else{// 반복하지 않는 특정 날짜 알람
+            Log.d("Tayg", String.valueOf(calendar.getTime()));
+            calendar.set(Calendar.SECOND, 0);
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
 
