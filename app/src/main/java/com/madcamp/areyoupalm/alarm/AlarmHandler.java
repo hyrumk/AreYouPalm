@@ -43,31 +43,38 @@ public class AlarmHandler {
 
         if(Arrays.asList(day_array).contains(true)){// 매주 반복하는 알람
             Calendar today = Calendar.getInstance();
-            int day; int target_day = 7;
+            int day; int add_day = -1; int iteration_check = -1;
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
             if(calendar.before(today)){// 오늘 날짜에 대입한 알람 설정 일자가 현재 시각보다 이전인 경우
-                day = today.get(Calendar.DAY_OF_WEEK);
+                day = today.get(Calendar.DAY_OF_WEEK);// 가장 가까운 미래에 설정할 알람의 일자를 내일부터 check
+                if(day == 7){
+                    day = 0;
+                }
+                add_day = 0;
             }
             else{
-                day = today.get(Calendar.DAY_OF_WEEK) - 1;
+                day = today.get(Calendar.DAY_OF_WEEK) - 1;// 가장 가까운 미래에 설정할 알람의 일자를 오늘부터 check
+                add_day = -1;
             }
+
             for(int i = day; i<7; i++){
+                add_day++;
                 if(day_array[i]){
-                    target_day = i;
+                    iteration_check = i;
                     break;
                 }
             }
-            if (target_day == 7){// If next day wasn't in remainder of the week
+            if (iteration_check == -1){// If next day wasn't in remainder of the week
                 for(int i = 0; i<day; i++){
+                    add_day++;
                     if(day_array[i]){
-                        target_day = i;
+                        iteration_check = i;
                         break;
                     }
                 }
             }
-            int days = target_day + (7-today.get(Calendar.DAY_OF_WEEK));
-            today.add(Calendar.DATE, days);
+            today.add(Calendar.DATE, add_day);
             today.set(Calendar.HOUR_OF_DAY, hour);
             today.set(Calendar.MINUTE, minute);
             today.set(Calendar.SECOND, 0);
@@ -88,10 +95,7 @@ public class AlarmHandler {
         timeOff.set(Calendar.SECOND, 0);
 
          */
-
-
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), pendingIntent);
-        //<TODO> 특정 일자 대상인지 매주 반복인지 확인 후 set the alarm accordingly,
+        //<TODO> 특정 일자 대상인지 매주 반복인지 확인 후 set the alarm accordingly, (된듯..?)
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
