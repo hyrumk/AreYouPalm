@@ -10,6 +10,7 @@ public class AlarmListClass extends Application {
 
     @Override
     public void onCreate() {
+        alarmList = new ArrayList<Alarm>();
         super.onCreate();
     }
 
