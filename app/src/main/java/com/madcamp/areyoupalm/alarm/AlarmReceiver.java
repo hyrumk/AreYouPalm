@@ -20,12 +20,12 @@ public class AlarmReceiver extends BroadcastReceiver {
         int requestCode = intent.getIntExtra("id", 0);
         String name = intent.getStringExtra("name");
         boolean[] day_array = intent.getBooleanArrayExtra("day_array");
-        Log.d("ARRAY", String.valueOf(day_array));
         String number = intent.getStringExtra("number");
         String message = intent.getStringExtra("message");
         String music = intent.getStringExtra("music");
         int HOUR = intent.getIntExtra("HOUR_OF_DAY",0);
         int MINUTE = intent.getIntExtra("MINUTE", 0);
+
         System.out.println("따르르르르릉");
         try {
             Intent activity = new Intent(context, AlarmActivity.class);

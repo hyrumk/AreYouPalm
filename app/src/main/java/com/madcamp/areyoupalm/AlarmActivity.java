@@ -61,12 +61,17 @@ public class AlarmActivity extends AppCompatActivity {
 
         int requestCode = intent.getIntExtra("id", 0);
         String name = intent.getStringExtra("name");
-        boolean[] day_array = intent.getBooleanArrayExtra("day_array");
+        boolean[] day_arrays = intent.getBooleanArrayExtra("day_array");
         String number = intent.getStringExtra("number");
         String message = intent.getStringExtra("message");
         String music = intent.getStringExtra("music");
         int HOUR = intent.getIntExtra("HOUR_OF_DAY",0);
         int MINUTE = intent.getIntExtra("MINUTE", 0);
+
+        Boolean[] day_array = new Boolean[7];
+        for(int i=0;i<7;i++){
+            day_array[i] = day_arrays[i];
+        }
 
         Calendar current = Calendar.getInstance();
         // Updates the alarm if it's a weekly alarm.

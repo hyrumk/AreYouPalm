@@ -32,13 +32,19 @@ public class AlarmHandler {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void setAlarm(Context context,
                          int requestCode, Calendar calendar,
-                         boolean[] day_array, String name,
+                         Boolean[] day_array, String name,
                          String number, String message, String music){
+
+        boolean[] day_arrays = new boolean[7];
+        for(int i=0;i<7;i++){
+            day_arrays[i] = day_array[i];
+        }
+
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(context, AlarmReceiver.class);
         myIntent.putExtra("id", requestCode);
         myIntent.putExtra("name", name);
-        myIntent.putExtra("day_array", day_array);
+        myIntent.putExtra("day_array", day_arrays);
         myIntent.putExtra("number", number);
         myIntent.putExtra("message", message);
         myIntent.putExtra("music", music);
