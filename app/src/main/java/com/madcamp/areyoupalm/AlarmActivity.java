@@ -58,6 +58,7 @@ public class AlarmActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
+
         int requestCode = intent.getIntExtra("id", 0);
         String name = intent.getStringExtra("name");
         boolean[] day_array = intent.getBooleanArrayExtra("day_array");
@@ -67,7 +68,7 @@ public class AlarmActivity extends AppCompatActivity {
         int HOUR = intent.getIntExtra("HOUR_OF_DAY",0);
         int MINUTE = intent.getIntExtra("MINUTE", 0);
 
-
+        Calendar current = Calendar.getInstance();
         // Updates the alarm if it's a weekly alarm.
         if(Arrays.asList(day_array).contains(true)){// If weekly alarm
             Calendar calendar = Calendar.getInstance();
@@ -81,16 +82,18 @@ public class AlarmActivity extends AppCompatActivity {
 
         }
 
+
+        /*<TODO> 사용자가 알람 해제를 누르지 않으면 50초동안 알람 울린 후 문자 보내기.
+        current.add(Calendar.SECOND,50);
+        while(mp.isPlaying()){
+
+        }
         // Make the alarm ring for 50 seconds unless the user turns it off manually
-        Handler handler=new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                mp.stop();
-            }
-        }, 50 * 1000);
-
+        if(mp.isPlaying() && Calendar.getInstance() == current){
+            mp.release();
+            finish();
+        }
+*/
 
         End_Button.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
