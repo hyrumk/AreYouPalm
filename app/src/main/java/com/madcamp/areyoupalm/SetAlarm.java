@@ -25,6 +25,7 @@ import com.madcamp.areyoupalm.alarm.AlarmHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 
 public class SetAlarm extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
@@ -106,7 +107,7 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 Calendar calendarToAlarm = Calendar.getInstance();
                 calendarToAlarm.set(alarm_year, alarm_month - 1, alarm_date, alarm_hour, alarm_minute);
 
-                boolean[] repeatdays = new boolean[7];
+                Boolean[] repeatdays = new Boolean[7];
                 Arrays.fill(repeatdays,false);
                 if (repeatDays.contains("일")) {
                     repeatdays[0] = true;
@@ -133,11 +134,16 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 EditText name = (EditText) findViewById(R.id.et_alarm_name);
                 EditText number = (EditText) findViewById(R.id.et_tag);
 
-                Alarm alarm = new Alarm(id,alarm_year, alarm_month, alarm_date, alarm_hour,alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays);
-                AlarmListClass alarmListApp = (AlarmListClass) getApplication();
-                alarmListApp.addAlarm(alarm);
+                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays);
+
+                AlarmListApp alarmListApp = (AlarmListApp) getApplication();
+                if(alarmListApp.contains(alarm))
+                    alarmListApp.remove(alarm);
+                alarmListApp.add(alarm);
+                alarmListApp.sort();
 
                 AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays, name.getText().toString(), number.getText().toString(), "알람 종료", "music");
+
                 finish();
             }
         });

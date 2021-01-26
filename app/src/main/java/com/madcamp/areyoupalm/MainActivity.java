@@ -2,6 +2,8 @@ package com.madcamp.areyoupalm;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.Activity;
@@ -16,8 +18,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
+
     private static final int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1001;
-    private Button testbutton;
+    RecyclerView recyclerView;
+    RecyclerViewAdapter adapter;
+    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
         RequestPermission();
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS}, PackageManager.PERMISSION_GRANTED);
+
+        recyclerView = (RecyclerView) findViewById(R.id.rcv_alarms);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        AlarmListApp alarmListApp = (AlarmListApp) getApplication();
+        adapter = new RecyclerViewAdapter(alarmListApp.getAlarmList());
+        recyclerView.setAdapter(adapter);
 
 
         ImageButton bt_addAlarm = (ImageButton)findViewById(R.id.bt_addAlarm);
@@ -36,23 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(addAlarm);
             }
         });
-
-
-
-
-
-       testbutton = findViewById(R.id.testbuttoon);
-       testbutton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent i = new Intent(getApplicationContext(),SMSActivity.class);
-               startActivity(i);
-           }
-       });
-
     }
-
-
+    
     private void RequestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(this)) {
@@ -63,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
                 //Permission Granted-System will work
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
 }
