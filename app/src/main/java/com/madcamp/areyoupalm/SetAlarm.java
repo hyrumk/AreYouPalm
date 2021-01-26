@@ -107,7 +107,7 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 Calendar calendarToAlarm = Calendar.getInstance();
                 calendarToAlarm.set(alarm_year, alarm_month - 1, alarm_date, alarm_hour, alarm_minute);
 
-                boolean[] repeatdays = new boolean[7];
+                Boolean[] repeatdays = new Boolean[7];
                 Arrays.fill(repeatdays,false);
                 if (repeatDays.contains("일")) {
                     repeatdays[0] = true;
@@ -134,7 +134,7 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 EditText name = (EditText) findViewById(R.id.et_alarm_name);
                 EditText number = (EditText) findViewById(R.id.et_tag);
 
-                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour,alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays);
+                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays);
 
                 AlarmListApp alarmListApp = (AlarmListApp) getApplication();
                 if(alarmListApp.contains(alarm))

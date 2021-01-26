@@ -57,7 +57,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String date_text = "";
         if(curAlarm.isRepeat)
         {
-
+            if (curAlarm.repeatDays.contains("일")) {
+                date_text += "일 ";
+            }
+            if (curAlarm.repeatDays.contains("월")) {
+                date_text += "월 ";
+            }
+            if (curAlarm.repeatDays.contains("화")) {
+                date_text += "화 ";
+            }
+            if (curAlarm.repeatDays.contains("수")) {
+                date_text += "수 ";
+            }
+            if (curAlarm.repeatDays.contains("목")) {
+                date_text += "목 ";
+            }
+            if (curAlarm.repeatDays.contains("금")) {
+                date_text += "금 ";
+            }
+            if (curAlarm.repeatDays.contains("토")) {
+                date_text += "토 ";
+            }
+            if (date_text.equals("일 월 화 수 목 금 토 "))
+                date_text = "매일";
         }
         else{
             Calendar cal = Calendar.getInstance();
