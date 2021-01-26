@@ -49,6 +49,9 @@ public class AlarmHandler {
             int day; int add_day = -1; int iteration_check = -1;
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
+            calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, hour);
+            calendar.set(Calendar.MINUTE, minute);
             if(calendar.before(today)){// 오늘 날짜에 대입한 알람 설정 일자가 현재 시각보다 이전인 경우
                 day = today.get(Calendar.DAY_OF_WEEK);// 가장 가까운 미래에 설정할 알람의 일자를 내일부터 check
                 if(day == 7){
