@@ -20,6 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         int requestCode = intent.getIntExtra("id", 0);
         String name = intent.getStringExtra("name");
         boolean[] day_array = intent.getBooleanArrayExtra("day_array");
+        Log.d("ARRAY", String.valueOf(day_array));
         String number = intent.getStringExtra("number");
         String message = intent.getStringExtra("message");
         String music = intent.getStringExtra("music");
