@@ -3,8 +3,9 @@ package com.madcamp.areyoupalm;
 import android.app.Application;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class AlarmListClass extends Application {
+public class AlarmListApp extends Application {
 
     private ArrayList<Alarm> alarmList;
 
@@ -19,11 +20,11 @@ public class AlarmListClass extends Application {
         super.onTerminate();
     }
 
-    public void addAlarm(Alarm alarm){
+    public void add(Alarm alarm){
         alarmList.add(alarm);
     }
 
-    public void removeAlarm(Alarm alarm){
+    public void remove(Alarm alarm){
         for (int i=0;i<alarmList.size();++i)
         {
             if (alarmList.get(i).id == alarm.id)
@@ -38,4 +39,16 @@ public class AlarmListClass extends Application {
         return alarmList;
     }
 
+    public boolean contains(Alarm alarm){
+        for (int i=0;i<alarmList.size();++i) {
+            if(alarmList.get(i).id==alarm.id)
+                return true;
+        }
+        return false;
+    }
+
+    public void sort(){
+        AlarmComparator comp = new AlarmComparator();
+        Collections.sort(alarmList, comp);
+    }
 }
