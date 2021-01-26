@@ -66,3 +66,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
+/*
+<TODO> Features we could add
+1. Give choices to users on which alarm to select (even from their own soundfiles)
+2. Make repeat possible
+3. Give a choice to give vibration when the alarm rings
+
+ */

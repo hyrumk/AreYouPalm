@@ -42,6 +42,9 @@ public class AlarmHandler {
         myIntent.putExtra("number", number);
         myIntent.putExtra("message", message);
         myIntent.putExtra("music", music);
+        // Below two will be used in setting the next alarm in weekly alarms
+        myIntent.putExtra("HOUR_OF_DAY", calendar.get(Calendar.HOUR_OF_DAY));
+        myIntent.putExtra("MINUTE", calendar.get(Calendar.MINUTE));
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         if(Arrays.asList(day_array).contains(true)){// 매주 반복하는 알람
