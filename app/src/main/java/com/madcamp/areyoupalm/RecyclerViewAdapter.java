@@ -187,8 +187,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     Intent modifyAlarm = new Intent(mContext, SetAlarm.class);
                     modifyAlarm.putExtra("ismodifying",true);
                     int pos = getAdapterPosition();
-//                    modifyAlarm.putExtra("alarm", alarmList.get(pos));
-//                    modifyAlarm.put
+                    modifyAlarm.putExtra("year", alarmList.get(pos).year);
+                    modifyAlarm.putExtra("month", alarmList.get(pos).month);
+                    modifyAlarm.putExtra("date", alarmList.get(pos).date);
+                    modifyAlarm.putExtra("hour", alarmList.get(pos).hour);
+                    modifyAlarm.putExtra("minute", alarmList.get(pos).minute);
+                    modifyAlarm.putExtra("name", alarmList.get(pos).name);
+                    modifyAlarm.putExtra("number", alarmList.get(pos).palmTag);
+                    modifyAlarm.putExtra("message", alarmList.get(pos).message);
+                    modifyAlarm.putExtra("repeatdays", alarmList.get(pos).repeatDays);
+                    modifyAlarm.putExtra("volume", alarmList.get(pos).volume);
+                    modifyAlarm.putExtra("isvibrate", alarmList.get(pos).isVibrate);
                     mContext.startActivity(modifyAlarm);
                 }
             });

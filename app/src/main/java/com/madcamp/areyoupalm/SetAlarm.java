@@ -43,11 +43,15 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
     int alarm_date = cal.get(Calendar.DATE);
     int alarm_hour = 6;
     int alarm_minute = 0;
+    String name;
+    String number;
+    String message;
     boolean isDayChecked = false;
     boolean isDateSet =false;
     boolean isModifying;
     AppCompatSeekBar seekBar;
     int volume;
+    boolean isVibrate;
     Switch vibration_switch;
     ArrayList<String> repeatDays = new ArrayList<String>();
 
@@ -59,23 +63,30 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String AlarmList_key = "AlarmList";
 
-
+        vibration_switch = findViewById(R.id.sw_vibration);
         seekBar = findViewById(R.id.volumebar);
-        seekBar.setProgress(5);
         seekBar.incrementProgressBy(1);
         seekBar.setMax(5);
-        volume = seekBar.getProgress();
-
-        vibration_switch = findViewById(R.id.sw_vibration);
 
         Intent intent = getIntent();
         isModifying= intent.getBooleanExtra("ismodifying",false);
         if(isModifying){
-            System.out.println("이미 저장된 알람을 수정하는 섹션에 진입");
+            alarm_year = intent.getIntExtra("year",0);
+            alarm_month = intent.getIntExtra("month",0);
+            alarm_date = intent.getIntExtra("date",0);
+            alarm_hour = intent.getIntExtra("hour",0);
+            alarm_minute = intent.getIntExtra("minute",0);
+            name = intent.getStringExtra("name");
+            number = intent.getStringExtra("number");
+            message = intent.getStringExtra("message");
+            repeatDays = intent.getStringArrayListExtra("repeatdays");
+            seekBar.setProgress(intent.getIntExtra("volume",0));
+            vibration_switch.setChecked(intent.getBooleanExtra("isvibrate", false));
         }
         else{
             if(isPastTime())
                 alarm_date += 1;
+            seekBar.setProgress(5);
         }
 
         setDateText();
@@ -154,11 +165,13 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                     repeatdays[6] = true;
                 }
 
-                EditText name = (EditText) findViewById(R.id.et_alarm_name);
-                EditText number = (EditText) findViewById(R.id.et_tag);
-                EditText message = (EditText) findViewById(R.id.sms_message);
+                EditText et_name = (EditText) findViewById(R.id.et_alarm_name);
+                EditText et_number = (EditText) findViewById(R.id.et_tag);
+                EditText et_message = (EditText) findViewById(R.id.sms_message);
 
-                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays, message.getText().toString(), volume, vibration_switch.isChecked());
+                volume = seekBar.getProgress();
+
+                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name, number, Arrays.asList(repeatdays).contains(true), repeatDays, message, volume, vibration_switch.isChecked());
 
 
 
