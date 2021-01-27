@@ -68,7 +68,6 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
 
         vibration_switch = findViewById(R.id.sw_vibration);
 
-
         Intent intent = getIntent();
         isModifying= intent.getBooleanExtra("ismodifying",false);
         if(isModifying){
@@ -157,8 +156,9 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
 
                 EditText name = (EditText) findViewById(R.id.et_alarm_name);
                 EditText number = (EditText) findViewById(R.id.et_tag);
+                EditText message = (EditText) findViewById(R.id.sms_message);
 
-                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays);
+                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays, message.getText().toString(), volume, vibration_switch.isChecked());
 
 
 

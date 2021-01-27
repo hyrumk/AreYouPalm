@@ -1,5 +1,7 @@
 package com.madcamp.areyoupalm;
 
+import com.madcamp.areyoupalm.alarm.AlarmHandler;
+
 import java.util.ArrayList;
 
 public class Alarm {
@@ -14,7 +16,11 @@ public class Alarm {
     boolean isActive;
     boolean isRepeat;
     ArrayList<String> repeatDays = new ArrayList<String>();
-    Alarm(int id, int year, int month, int date, int hour, int minute, String name, String palmTag, boolean isRepeat, ArrayList<String> repeatDays){
+    String message;
+    int volume;
+    boolean isVibrate;
+
+    Alarm(int id, int year, int month, int date, int hour, int minute, String name, String palmTag, boolean isRepeat, ArrayList<String> repeatDays, String message, int volume, boolean isVibrate){
         this.id = id;
         this.year = year;
         this.month = month;
@@ -26,6 +32,9 @@ public class Alarm {
         this.isActive = true;
         this.isRepeat = isRepeat;
         this.repeatDays = repeatDays;
+        this.message = message;
+        this.volume = volume;
+        this.isVibrate = isVibrate;
     }
 
     public void deactivate(){
