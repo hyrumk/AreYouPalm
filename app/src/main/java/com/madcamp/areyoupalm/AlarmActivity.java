@@ -14,6 +14,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -127,35 +128,34 @@ public class AlarmActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                Log.d("ONFINISH", "FINISH");
                 mp.release();
                 vibrator.cancel();
+                sendSMS(number, message);
                 finish();
             }
         }.start();
+        Log.d("AFTERFINISH", "FINISH");
 
-
-
-        /*<TODO> 사용자가 알람 해제를 누르지 않으면 50초동안 알람 울린 후 문자 보내기.
-        current.add(Calendar.SECOND,50);
-        while(mp.isPlaying()){
-
-        }
-        // Make the alarm ring for 50 seconds unless the user turns it off manually
-        if(mp.isPlaying() && Calendar.getInstance() == current){
-            mp.release();
-            finish();
-        }
-*/
 
         End_Button.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                mp.release();
+                vibrator.cancel();
                 countdown50.cancel();
+                finish();
                 return false;
             }
         });
 
 
+    }
+
+
+    public void sendSMS(String number_to_send, String text_to_send){
+        SmsManager mySmsManager = SmsManager.getDefault();
+        mySmsManager.sendTextMessage(number_to_send, null, text_to_send, null, null);
     }
 
 }
