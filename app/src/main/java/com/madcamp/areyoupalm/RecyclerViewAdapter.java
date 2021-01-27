@@ -1,17 +1,26 @@
 package com.madcamp.areyoupalm;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.madcamp.areyoupalm.alarm.AlarmHandler;
 
 import java.nio.channels.CancelledKeyException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
@@ -114,6 +123,40 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.repeatDateView.setText(date_text);
         if(curAlarm.isActive)
             holder.activate.setChecked(true);
+
+        holder.activate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    curAlarm.activate();
+                    Calendar cal = Calendar.getInstance();
+                    cal.set(curAlarm.year,curAlarm.month,curAlarm.date,curAlarm.hour,curAlarm.minute);
+                    Boolean[] repeatdays = new Boolean[7];
+                    Arrays.fill(repeatdays,false);
+                    if(curAlarm.repeatDays.contains("일"))
+                        repeatdays[0] = true;
+                    if(curAlarm.repeatDays.contains("월"))
+                        repeatdays[1] = true;
+                    if(curAlarm.repeatDays.contains("화"))
+                        repeatdays[2] = true;
+                    if(curAlarm.repeatDays.contains("수"))
+                        repeatdays[3] = true;
+                    if(curAlarm.repeatDays.contains("목"))
+                        repeatdays[4] = true;
+                    if(curAlarm.repeatDays.contains("금"))
+                        repeatdays[5] = true;
+                    if(curAlarm.repeatDays.contains("토"))
+                        repeatdays[6] = true;
+
+                    AlarmHandler.setAlarm(mContext, curAlarm.id, cal, repeatdays, curAlarm.name, curAlarm.palmTag, curAlarm.message,"music", curAlarm.volume, curAlarm.isVibrate);
+                }
+                else {
+                    curAlarm.deactivate();
+                    AlarmHandler.cancelAlarm(mContext, curAlarm.id);
+                }
+            }
+        });
     }
 
     @Override
@@ -138,6 +181,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tagView = (TextView) v.findViewById(R.id.tx_alarm_tag);
             repeatDateView = (TextView) v.findViewById(R.id.tx_repeat_date);
             activate = (Switch) v.findViewById(R.id.sw_activate);
+            v.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent modifyAlarm = new Intent(mContext, SetAlarm.class);
+                    modifyAlarm.putExtra("ismodifying",true);
+                    int pos = getAdapterPosition();
+//                    modifyAlarm.putExtra("alarm", alarmList.get(pos));
+//                    modifyAlarm.put
+                    mContext.startActivity(modifyAlarm);
+                }
+            });
         }
     }
 }

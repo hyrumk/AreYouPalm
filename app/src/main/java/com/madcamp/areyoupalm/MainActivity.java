@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.rcv_alarms);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-//        SharedPreferences sf = getSharedPreferences("alarmList",MODE_PRIVATE);
-
         AlarmListApp alarmListApp = (AlarmListApp) getApplication();
         adapter = new RecyclerViewAdapter(alarmListApp.getAlarmList());
         recyclerView.setAdapter(adapter);
