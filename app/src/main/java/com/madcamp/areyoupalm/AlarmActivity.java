@@ -59,35 +59,6 @@ public class AlarmActivity extends AppCompatActivity {
 
         End_Button = findViewById(R.id.end_button);
 
-        if(mp == null){
-            mp = MediaPlayer.create(this, R.raw.loud_alarm_clock);
-            AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-            // Sets volume to max //
-            am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)/5, 0);
-            mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-            mp.setLooping(true);
-            mp.start();
-        }
-
-
-
-        ////////////////////////// VIBRATION ////////////////////////
-        long[] pattern = { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
-        int[] mAmplitudes = new int[]{0, 255, 0, 255, 0, 255, 0, 255, 0, 255};
-
-        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            VibrationEffect effect = VibrationEffect.createWaveform(pattern, mAmplitudes, 0); //This do work on Android 9
-            vibrator.vibrate(effect);
-        }
-        else {
-            vibrator.vibrate(pattern , 0); //This do work on Android 6
-        }
-        /////////////////////////////////////////////////////////////
-
-
         //////////////// Sets next alarm when it's on a weekly basis ////////////////
         Intent intent = getIntent();
 
@@ -97,8 +68,43 @@ public class AlarmActivity extends AppCompatActivity {
         String number = intent.getStringExtra("number");
         String message = intent.getStringExtra("message");
         String music = intent.getStringExtra("music");
+        int volume = intent.getIntExtra("volume", 5);
+        boolean vibration = intent.getBooleanExtra("vibration", true);
         int HOUR = intent.getIntExtra("HOUR_OF_DAY",0);
         int MINUTE = intent.getIntExtra("MINUTE", 0);
+
+
+        ///////////////////////// Music Related Settings ///////////////////////
+        Log.d("VOLUME", String.valueOf(volume));
+
+        if(mp == null){
+            mp = MediaPlayer.create(this, R.raw.loud_alarm_clock);
+            AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            // Sets volume to max //
+            am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)/5*volume, 0);
+            mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+            mp.setLooping(true);
+            mp.start();
+        }
+
+
+        ////////////////////////// VIBRATION ////////////////////////
+        long[] pattern = { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
+        int[] mAmplitudes = new int[]{0, 255, 0, 255, 0, 255, 0, 255, 0, 255};
+
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if(vibration){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                VibrationEffect effect = VibrationEffect.createWaveform(pattern, mAmplitudes, 0); //This do work on Android 9
+                vibrator.vibrate(effect);
+            }
+            else {
+                vibrator.vibrate(pattern , 0); //This do work on Android 6
+            }
+        }
+        /////////////////////////////////////////////////////////////
+
 
         Boolean[] day_array = new Boolean[7];
         for(int i=0;i<7;i++){
@@ -112,7 +118,7 @@ public class AlarmActivity extends AppCompatActivity {
             calendar.set(Calendar.HOUR_OF_DAY, HOUR);
             calendar.set(Calendar.MINUTE, MINUTE);
             calendar.set(Calendar.SECOND, 0);
-            AlarmHandler.setAlarm(getApplicationContext(), requestCode, calendar, day_array, name, number, message, music);
+            AlarmHandler.setAlarm(getApplicationContext(), requestCode, calendar, day_array, name, number, message, music, volume, vibration);
         }
         else{ // If non-weekly alarm
             //<TODO> 알람 삭제 or 끄기! (Also from recylcerview in MainActivity)
@@ -126,7 +132,9 @@ public class AlarmActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 mp.release();
-                vibrator.cancel();
+                if(vibration){
+                    vibrator.cancel();
+                }
                 sendSMS(number, message);
                 finish();
             }
@@ -137,7 +145,9 @@ public class AlarmActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 mp.release();
-                vibrator.cancel();
+                if(vibration){
+                    vibrator.cancel();
+                }
                 countdown50.cancel();
                 finish();
                 return false;

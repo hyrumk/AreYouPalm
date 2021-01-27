@@ -2,6 +2,7 @@ package com.madcamp.areyoupalm;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSeekBar;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -16,6 +17,8 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -38,12 +41,24 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
     boolean isDayChecked = false;
     boolean isDateSet =false;
     boolean isModifying;
+    AppCompatSeekBar seekBar;
+    int volume;
+    Switch vibration_switch;
     ArrayList<String> repeatDays = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_alarm);
+
+        seekBar = findViewById(R.id.volumebar);
+        seekBar.setProgress(5);
+        seekBar.incrementProgressBy(1);
+        seekBar.setMax(5);
+        volume = seekBar.getProgress();
+
+        vibration_switch = findViewById(R.id.sw_vibration);
+
 
         Intent intent = getIntent();
         isModifying= intent.getBooleanExtra("ismodifying",false);
@@ -142,9 +157,26 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 alarmListApp.add(alarm);
                 alarmListApp.sort();
 
-                AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays, name.getText().toString(), number.getText().toString(), "알람 종료", "music");
+                AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays, name.getText().toString(), number.getText().toString(), "알람 종료", "music", volume, vibration_switch.isChecked());
 
                 finish();
+            }
+        });
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                volume = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }

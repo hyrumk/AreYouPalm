@@ -23,9 +23,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         String number = intent.getStringExtra("number");
         String message = intent.getStringExtra("message");
         String music = intent.getStringExtra("music");
+        int volume = intent.getIntExtra("volume", 5);
+        boolean vibration = intent.getBooleanExtra("vibration", true);
         int HOUR = intent.getIntExtra("HOUR_OF_DAY",0);
         int MINUTE = intent.getIntExtra("MINUTE", 0);
-        
+
         try {
             Intent activity = new Intent(context, AlarmActivity.class);
             activity.putExtra("id", requestCode);
@@ -34,6 +36,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             activity.putExtra("number", number);
             activity.putExtra("message", message);
             activity.putExtra("music", music);
+            activity.putExtra("volume", volume);
+            activity.putExtra("vibration", vibration);
             activity.putExtra("HOUR_OF_DAY", HOUR);
             activity.putExtra("MINUTE", MINUTE);
             activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

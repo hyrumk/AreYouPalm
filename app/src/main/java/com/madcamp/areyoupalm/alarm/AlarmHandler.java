@@ -33,7 +33,7 @@ public class AlarmHandler {
     public static void setAlarm(Context context,
                          int requestCode, Calendar calendar,
                          Boolean[] day_array, String name,
-                         String number, String message, String music){
+                         String number, String message, String music, int volume, boolean vibration){
 
         boolean[] day_arrays = new boolean[7];
         for(int i=0;i<7;i++){
@@ -48,6 +48,8 @@ public class AlarmHandler {
         myIntent.putExtra("number", number);
         myIntent.putExtra("message", message);
         myIntent.putExtra("music", music);
+        myIntent.putExtra("volume", volume);
+        myIntent.putExtra("vibration", vibration);
         // Below two will be used in setting the next alarm in weekly alarms
         myIntent.putExtra("HOUR_OF_DAY", calendar.get(Calendar.HOUR_OF_DAY));
         myIntent.putExtra("MINUTE", calendar.get(Calendar.MINUTE));
