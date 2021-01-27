@@ -1,6 +1,10 @@
 package com.madcamp.areyoupalm;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +43,10 @@ public class AlarmListApp extends Application {
         return alarmList;
     }
 
+    public void updateAlarmList(ArrayList<Alarm> alarmlist){
+        alarmList = alarmlist;
+    }
+
     public boolean contains(Alarm alarm){
         for (int i=0;i<alarmList.size();++i) {
             if(alarmList.get(i).id==alarm.id)
@@ -51,4 +59,5 @@ public class AlarmListApp extends Application {
         AlarmComparator comp = new AlarmComparator();
         Collections.sort(alarmList, comp);
     }
+
 }

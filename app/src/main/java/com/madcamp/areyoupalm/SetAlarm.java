@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSeekBar;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
@@ -23,12 +25,15 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.madcamp.areyoupalm.alarm.AlarmHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.List;
 
 public class SetAlarm extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
@@ -50,6 +55,10 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_alarm);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String AlarmList_key = "AlarmList";
+
 
         seekBar = findViewById(R.id.volumebar);
         seekBar.setProgress(5);
@@ -151,13 +160,31 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
 
                 Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays);
 
+
+
                 AlarmListApp alarmListApp = (AlarmListApp) getApplication();
+                // get Stored AlarmList
+                String AlarmListPreferences = sharedPreferences.getString(AlarmList_key,"");
+                Gson gson = new Gson();
+                ArrayList<Alarm> storedAlarmList = gson.fromJson(AlarmListPreferences, new TypeToken<List<Alarm>>(){}.getType());
+                if(!AlarmListPreferences.equals("")){
+                    alarmListApp.updateAlarmList(storedAlarmList);
+                }
                 if(alarmListApp.contains(alarm))
                     alarmListApp.remove(alarm);
                 alarmListApp.add(alarm);
                 alarmListApp.sort();
 
-                AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays, name.getText().toString(), number.getText().toString(), "알람 종료", "music", volume, vibration_switch.isChecked());
+                // Update sharedPreferences for alarmList
+                storedAlarmList = alarmListApp.getAlarmList();
+                gson = new Gson();
+                String json = gson.toJson(storedAlarmList);
+                sharedPreferences.edit().putString(AlarmList_key, json).apply();
+
+
+                AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays,
+                        name.getText().toString(), number.getText().toString(), "알람 종료",
+                        "music", volume, vibration_switch.isChecked());
 
                 finish();
             }
