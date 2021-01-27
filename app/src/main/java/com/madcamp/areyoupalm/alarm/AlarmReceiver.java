@@ -25,8 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         String music = intent.getStringExtra("music");
         int HOUR = intent.getIntExtra("HOUR_OF_DAY",0);
         int MINUTE = intent.getIntExtra("MINUTE", 0);
-
-        System.out.println("따르르르르릉");
+        
         try {
             Intent activity = new Intent(context, AlarmActivity.class);
             activity.putExtra("id", requestCode);

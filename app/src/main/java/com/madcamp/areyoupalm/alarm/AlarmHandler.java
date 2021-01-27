@@ -102,33 +102,7 @@ public class AlarmHandler {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
 
-        //<TODO> 특정 일자 대상인지 매주 반복인지 확인 후 set the alarm accordingly, (된듯..?)
     }
-
-    /*
-    Function editAlarm may be replaceable by setAlarm.
-
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static void editAlarm(Context context,
-                          int requestCode, Calendar calendar,
-                          boolean[] day_array, String name,
-                          String number, String message, String music){
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent myIntent = new Intent(context, AlarmReceiver.class);
-        myIntent.putExtra("id", requestCode);
-        myIntent.putExtra("name", name);
-        myIntent.putExtra("day_array", day_array);
-        myIntent.putExtra("number", number);
-        myIntent.putExtra("message", message);
-        myIntent.putExtra("music", music);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, myIntent, 0);
-
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), pendingIntent);
-        //<TODO> 특정 일자 대상인지 매주 반복인지 확인 후 set the alarm accordingly,
-    }
-    */
-
 
     public static void cancelAlarm(Context context, int requestCode){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

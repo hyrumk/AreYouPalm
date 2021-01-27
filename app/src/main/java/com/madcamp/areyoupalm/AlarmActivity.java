@@ -118,24 +118,19 @@ public class AlarmActivity extends AppCompatActivity {
             //<TODO> 알람 삭제 or 끄기! (Also from recylcerview in MainActivity)
 
         }
-        ////////////////////////////////////////////////////////////////////////////////
-
+        /////////////////////// Wait 50 seconds unless the user turns it off. If not turned off by 50 seconds, send SMS to a dedicated person /////////////////////////////
         CountDownTimer countdown50 = new CountDownTimer(50000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-
             }
-
             @Override
             public void onFinish() {
-                Log.d("ONFINISH", "FINISH");
                 mp.release();
                 vibrator.cancel();
                 sendSMS(number, message);
                 finish();
             }
         }.start();
-        Log.d("AFTERFINISH", "FINISH");
 
 
         End_Button.setOnLongClickListener(new View.OnLongClickListener() {
@@ -148,8 +143,6 @@ public class AlarmActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 
 

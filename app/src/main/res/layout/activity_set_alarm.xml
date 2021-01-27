@@ -103,12 +103,23 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:orientation="vertical">
             <EditText
                 android:id="@+id/et_tag"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="야 자냐?">
+                android:hint="상대방 번호">
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/sms_message"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="못 일어날 경우 상대방에게 보낼 메시지를 입력하세요">
             </EditText>
         </LinearLayout>
         <LinearLayout
@@ -120,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="다시 울림" />
+                android:text="진동" />
         </LinearLayout>
 
     </LinearLayout>
