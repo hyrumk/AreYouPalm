@@ -38,6 +38,7 @@ import java.util.List;
 public class SetAlarm extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     Calendar cal = Calendar.getInstance();
+    int prev_id;
     int alarm_year = cal.get(Calendar.YEAR);
     int alarm_month = cal.get(Calendar.MONTH) + 1;
     int alarm_date = cal.get(Calendar.DATE);
@@ -46,10 +47,13 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
     boolean isDayChecked = false;
     boolean isDateSet =false;
     boolean isModifying;
-    AppCompatSeekBar seekBar;
-    int volume;
-    Switch vibration_switch;
     ArrayList<String> repeatDays = new ArrayList<String>();
+    EditText et_name;
+    EditText et_number;
+    EditText et_message;
+    AppCompatSeekBar seekBar;
+    Switch vibration_switch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,24 +62,34 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String AlarmList_key = "AlarmList";
-
-
-        seekBar = findViewById(R.id.volumebar);
-        seekBar.setProgress(5);
+        et_name = (EditText) findViewById(R.id.et_alarm_name);
+        et_number = (EditText) findViewById(R.id.et_tag);
+        et_message = (EditText) findViewById(R.id.sms_message);
+        seekBar = (AppCompatSeekBar) findViewById(R.id.volumebar);
+        vibration_switch = (Switch) findViewById(R.id.sw_vibration);
         seekBar.incrementProgressBy(1);
         seekBar.setMax(5);
-        volume = seekBar.getProgress();
-
-        vibration_switch = findViewById(R.id.sw_vibration);
 
         Intent intent = getIntent();
         isModifying= intent.getBooleanExtra("ismodifying",false);
         if(isModifying){
-            System.out.println("이미 저장된 알람을 수정하는 섹션에 진입");
+            prev_id = intent.getIntExtra("id",0);
+            alarm_year = intent.getIntExtra("year",0);
+            alarm_month = intent.getIntExtra("month",0);
+            alarm_date = intent.getIntExtra("date",0);
+            alarm_hour = intent.getIntExtra("hour",0);
+            alarm_minute = intent.getIntExtra("minute",0);
+            et_name.setText(intent.getStringExtra("name"));
+            et_number.setText(intent.getStringExtra("number"));
+            et_message.setText(intent.getStringExtra("message"));
+            repeatDays = intent.getStringArrayListExtra("repeatdays");
+            seekBar.setProgress(intent.getIntExtra("volume",0));
+            vibration_switch.setChecked(intent.getBooleanExtra("isvibrate", false));
         }
         else{
             if(isPastTime())
                 alarm_date += 1;
+            seekBar.setProgress(5);
         }
 
         setDateText();
@@ -126,6 +140,19 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
+                AlarmListApp alarmListApp = (AlarmListApp) getApplication();
+                // get Stored AlarmList
+                String AlarmListPreferences = sharedPreferences.getString(AlarmList_key,"");
+                Gson gson = new Gson();
+                ArrayList<Alarm> storedAlarmList = gson.fromJson(AlarmListPreferences, new TypeToken<List<Alarm>>(){}.getType());
+                if(!AlarmListPreferences.equals("")){
+                    alarmListApp.updateAlarmList(storedAlarmList);
+                }
+
+                if(isModifying) {
+                    AlarmHandler.cancelAlarm(getApplicationContext(), prev_id);
+                    alarmListApp.removeById(prev_id);
+                }
 
                 int id = getId();
                 Calendar calendarToAlarm = Calendar.getInstance();
@@ -155,22 +182,8 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                     repeatdays[6] = true;
                 }
 
-                EditText name = (EditText) findViewById(R.id.et_alarm_name);
-                EditText number = (EditText) findViewById(R.id.et_tag);
-                EditText message = (EditText) findViewById(R.id.sms_message);
+                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, et_name.getText().toString(), et_number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays, et_message.getText().toString(), seekBar.getProgress(), vibration_switch.isChecked());
 
-                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, name.getText().toString(), number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays, message.getText().toString(), volume, vibration_switch.isChecked());
-
-
-
-                AlarmListApp alarmListApp = (AlarmListApp) getApplication();
-                // get Stored AlarmList
-                String AlarmListPreferences = sharedPreferences.getString(AlarmList_key,"");
-                Gson gson = new Gson();
-                ArrayList<Alarm> storedAlarmList = gson.fromJson(AlarmListPreferences, new TypeToken<List<Alarm>>(){}.getType());
-                if(!AlarmListPreferences.equals("")){
-                    alarmListApp.updateAlarmList(storedAlarmList);
-                }
                 if(alarmListApp.contains(alarm))
                     alarmListApp.remove(alarm);
                 alarmListApp.add(alarm);
@@ -182,29 +195,11 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 String json = gson.toJson(storedAlarmList);
                 sharedPreferences.edit().putString(AlarmList_key, json).apply();
 
-
                 AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays,
-                        name.getText().toString(), number.getText().toString(), "알람 종료",
-                        "music", volume, vibration_switch.isChecked());
+                        et_name.getText().toString(), et_number.getText().toString(), et_message.getText().toString(),
+                        "music", seekBar.getProgress(), vibration_switch.isChecked());
 
                 finish();
-            }
-        });
-
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                volume = progress;
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
     }
