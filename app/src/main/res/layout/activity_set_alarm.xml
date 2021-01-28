@@ -5,171 +5,358 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SetAlarm">
-    <LinearLayout
-        android:id="@+id/linear1"
-        android:layout_width="match_parent"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalhalf_guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        app:layout_constraintGuide_percent="0.5"/>
 
-            <TimePicker
-                android:id="@+id/alarm_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:timePickerMode="spinner" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tx_alarm_day"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-            <ImageButton
-                android:id="@+id/bt_alarm_calender"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/calendar">
-            </ImageButton>
-        </LinearLayout>
-        <LinearLayout
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/alarm_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/calendar_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/days_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vibration_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vibrationtext1_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.43"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vibrationtext2_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.47"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumebar_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.54"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumevibrationtext_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.28"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/textstart_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/textend_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumetext1_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.49"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumetext2_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/text_alarm_name_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.58"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/alarm_name_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.64"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/text_number_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.68"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/number_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/message_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92"/>
+
+
+
+
+
+    <TimePicker
+        android:id="@+id/alarm_time"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-            <CheckBox
-                android:id="@+id/cb_sun"
-                android:layout_width="57dp"
-                android:layout_height="wrap_content"
-                android:textColor="#FF0000"
-                android:text="일">
-            </CheckBox>
-            <CheckBox
-                android:id="@+id/cb_mon"
-                android:layout_width="57dp"
-                android:layout_height="wrap_content"
-                android:text="월">
-            </CheckBox>
-            <CheckBox
-                android:id="@+id/cb_tue"
-                android:layout_width="57dp"
-                android:layout_height="wrap_content"
-                android:text="화">
-            </CheckBox>
-            <CheckBox
-                android:id="@+id/cb_wed"
-                android:layout_width="57dp"
-                android:layout_height="wrap_content"
-                android:text="수">
-            </CheckBox>
-            <CheckBox
-                android:id="@+id/cb_thu"
-                android:layout_width="57dp"
-                android:layout_height="wrap_content"
-                android:text="목">
-            </CheckBox>
-            <CheckBox
-                android:id="@+id/cb_fri"
-                android:layout_width="57dp"
-                android:layout_height="wrap_content"
-                android:text="금">
-            </CheckBox>
-            <CheckBox
-                android:id="@+id/cb_sat"
-                android:layout_width="57dp"
-                android:layout_height="wrap_content"
-                android:textColor="#0000FF"
-                android:text="토">
-            </CheckBox>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <EditText
-                android:id="@+id/et_alarm_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="알람 이름">
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/et_tag"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="상대방 번호">
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/sms_message"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:hint="못 일어날 경우 상대방에게 보낼 메시지를 입력하세요">
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-            <androidx.appcompat.widget.AppCompatSeekBar
-                android:id="@+id/volumebar"
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:paddingLeft="10dp">
-            <Switch
-                android:id="@+id/sw_vibration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="진동" />
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/alarm_guideline"/>
 
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/bt_alarm_calender"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/calendar"
+        android:backgroundTint="#646464"
+        app:layout_constraintEnd_toStartOf= "@id/textend_guideline"
+        app:layout_constraintTop_toBottomOf="@id/alarm_guideline"
+        app:layout_constraintBottom_toTopOf="@id/calendar_guideline" />
+
+    <TextView
+        android:id="@+id/tx_alarm_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="left"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/alarm_guideline"
+        app:layout_constraintBottom_toTopOf="@id/calendar_guideline"
+        app:layout_constraintEnd_toStartOf="@id/bt_alarm_calender"
+        />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <Button
-            android:id="@+id/bt_cancel"
-            android:layout_width="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline">
+        <CheckBox
+            android:id="@+id/cb_sun"
+            android:layout_width="57dp"
             android:layout_height="wrap_content"
-            android:text="취소"
-            android:textColor="@color/black"
-            android:background="#00ff0000">
-        </Button>
-
-        <Button
-            android:id="@+id/bt_save"
-            android:layout_width="200dp"
+            android:textColor="#FF0000"
+            android:text="일">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/cb_mon"
+            android:layout_width="57dp"
             android:layout_height="wrap_content"
-            android:text="저장"
-            android:textColor="@color/black"
-            android:background="#00ff0000">
-        </Button>
+            android:text="월">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/cb_tue"
+            android:layout_width="57dp"
+            android:layout_height="wrap_content"
+            android:text="화">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/cb_wed"
+            android:layout_width="57dp"
+            android:layout_height="wrap_content"
+            android:text="수">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/cb_thu"
+            android:layout_width="57dp"
+            android:layout_height="wrap_content"
+            android:text="목">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/cb_fri"
+            android:layout_width="57dp"
+            android:layout_height="wrap_content"
+            android:text="금">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/cb_sat"
+            android:layout_width="57dp"
+            android:layout_height="wrap_content"
+            android:textColor="#0000FF"
+            android:text="토">
+        </CheckBox>
     </LinearLayout>
 
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:text="진동"
+        android:gravity="center_vertical"
+        android:autoSizeTextType="uniform"
+        android:layout_marginVertical="2dp"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/vibrationtext1_guideline"
+        app:layout_constraintBottom_toTopOf="@id/vibrationtext2_guideline"/>
 
+    <Switch
+        android:id="@+id/sw_vibration"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toEndOf="@id/volumevibrationtext_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/days_guideline"
+        app:layout_constraintBottom_toTopOf="@id/vibration_guideline" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:text="볼륨"
+        android:gravity="center_vertical"
+        android:autoSizeTextType="uniform"
+        android:layout_marginVertical="2dp"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/volumetext1_guideline"
+        app:layout_constraintBottom_toTopOf="@id/volumetext2_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/volumebar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="40dp"
+        android:progressBackgroundTint="#e8e8e8"
+        app:layout_constraintStart_toEndOf="@id/volumevibrationtext_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vibration_guideline"
+        app:layout_constraintBottom_toTopOf="@id/volumebar_guideline"
+        />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:text="알람 이름"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="2dp"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/volumebar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/text_alarm_name_guideline"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@+id/textstart_guideline"
+        app:layout_constraintEnd_toEndOf="@+id/textend_guideline"
+        app:layout_constraintTop_toBottomOf="@id/text_alarm_name_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/alarm_name_guideline">
+        <EditText
+            android:id="@+id/et_alarm_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="@+id/textstart_guideline"
+            app:layout_constraintEnd_toEndOf="@+id/textend_guideline"
+            app:layout_constraintTop_toBottomOf="@id/text_alarm_name_guideline"
+            app:layout_constraintBottom_toTopOf="@+id/alarm_name_guideline"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:text="번호 입력"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="2dp"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/alarm_name_guideline"
+        app:layout_constraintBottom_toTopOf="@id/text_number_guideline"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@+id/textstart_guideline"
+        app:layout_constraintEnd_toEndOf="@+id/textend_guideline"
+        app:layout_constraintTop_toBottomOf="@id/text_number_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/number_guideline">
+        <EditText
+            android:id="@+id/et_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/sms_message"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/message_border"
+        app:layout_constraintTop_toBottomOf="@id/number_guideline"
+        app:layout_constraintBottom_toTopOf="@id/message_guideline"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintEnd_toStartOf="@id/textend_guideline"
+        android:hint="메시지를 입력하세요"
+        android:padding="10dp"
+        android:gravity="top"/>
+
+    <Button
+        android:id="@+id/bt_cancel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="취소"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/message_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/verticalhalf_guideline">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="저장"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/message_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textend_guideline"
+        app:layout_constraintStart_toEndOf="@id/verticalhalf_guideline">
+    </Button>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

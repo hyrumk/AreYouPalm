@@ -2,6 +2,7 @@ package com.madcamp.areyoupalm;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatSeekBar;
 
 import android.app.DatePickerDialog;
@@ -18,7 +19,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -91,7 +91,8 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
             }
         });
 
-        ImageButton bt_calendar = (ImageButton) findViewById(R.id.bt_alarm_calender);
+        AppCompatImageButton bt_calendar = (AppCompatImageButton) findViewById(R.id.bt_alarm_calender);
+
         bt_calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

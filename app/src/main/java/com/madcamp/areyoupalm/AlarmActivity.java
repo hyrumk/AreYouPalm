@@ -135,7 +135,7 @@ public class AlarmActivity extends AppCompatActivity {
                 if(vibration){
                     vibrator.cancel();
                 }
-                if(number != ""){
+                if(!number.equals("")){
                     sendSMS(number, message);
                 }
                 finish();
