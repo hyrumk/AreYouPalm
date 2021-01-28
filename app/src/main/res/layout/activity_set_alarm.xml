@@ -6,6 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".SetAlarm">
 
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day0_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.045"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day1_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.175"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day2_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.305"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day3_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.435"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day4_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.565"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day5_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.695"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day6_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.825"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day7_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.955"/>
+
+
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalhalf_guideline"
         android:layout_width="wrap_content"
@@ -140,6 +200,7 @@
         android:layout_height="0dp"
         android:timePickerMode="spinner"
         android:theme="@style/Theme.Picker"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/alarm_guideline"/>
 
@@ -165,60 +226,146 @@
         app:layout_constraintEnd_toStartOf="@id/bt_alarm_calender"
         />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sun_btn"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="일"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day0_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day1_guideline"
         app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
-        app:layout_constraintBottom_toTopOf="@id/days_guideline">
-        <CheckBox
-            android:id="@+id/cb_sun"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:textColor="#FF0000"
-            android:text="일">
-        </CheckBox>
-        <CheckBox
-            android:id="@+id/cb_mon"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:text="월">
-        </CheckBox>
-        <CheckBox
-            android:id="@+id/cb_tue"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:text="화">
-        </CheckBox>
-        <CheckBox
-            android:id="@+id/cb_wed"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:text="수">
-        </CheckBox>
-        <CheckBox
-            android:id="@+id/cb_thu"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:text="목">
-        </CheckBox>
-        <CheckBox
-            android:id="@+id/cb_fri"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:text="금">
-        </CheckBox>
-        <CheckBox
-            android:id="@+id/cb_sat"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:textColor="#0000FF"
-            android:text="토">
-        </CheckBox>
-    </LinearLayout>
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/mon_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="월"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day1_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day2_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tue_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="화"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day2_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day3_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/wed_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="수"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day3_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day4_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/thu_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="목"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day4_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day5_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fri_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="금"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day5_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day6_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sat_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="토"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day6_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day7_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
 
     <TextView
         android:layout_width="40dp"
