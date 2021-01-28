@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -20,8 +21,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.gson.Gson;
 import com.madcamp.areyoupalm.alarm.AlarmHandler;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 /*
@@ -122,6 +125,14 @@ public class AlarmActivity extends AppCompatActivity {
         }
         else{ // If non-weekly alarm
             //<TODO> 알람 삭제 or 끄기! (Also from recylcerview in MainActivity)
+            SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+            String AlarmList_key = "AlarmList";
+            AlarmListApp alarmListApp = (AlarmListApp) getApplication();
+            ArrayList<Alarm> storedAlarmList = alarmListApp.getAlarmList();
+            alarmListApp.removeById(requestCode);
+            Gson gson = new Gson();
+            String json = gson.toJson(storedAlarmList);
+            sharedPreferences.edit().putString(AlarmList_key, json).apply();
 
         }
         /////////////////////// Wait 50 seconds unless the user turns it off. If not turned off by 50 seconds, send SMS to a dedicated person /////////////////////////////

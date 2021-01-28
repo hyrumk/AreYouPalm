@@ -1,7 +1,9 @@
 package com.madcamp.areyoupalm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +24,7 @@ import android.widget.ImageButton;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.madcamp.areyoupalm.alarm.AlarmHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +60,29 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RecyclerViewAdapter(alarmListApp.getAlarmList());
         recyclerView.setAdapter(adapter);
 
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                final int position = viewHolder.getAdapterPosition();
+
+                AlarmListApp alarmListApp = (AlarmListApp) getApplication();
+                ArrayList<Alarm> storedAlarmList = alarmListApp.getAlarmList();
+                alarmListApp.remove(storedAlarmList.get(position));
+                AlarmHandler.cancelAlarm(getApplicationContext(), storedAlarmList.get(position).id);
+                Gson gson = new Gson();
+                String json = gson.toJson(storedAlarmList);
+                sharedPreferences.edit().putString(AlarmList_key, json).apply();
+
+                adapter.notifyDataSetChanged();
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         ImageButton bt_addAlarm = (ImageButton)findViewById(R.id.bt_addAlarm);
         bt_addAlarm.setOnClickListener(new View.OnClickListener() {
