@@ -6,14 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".AlarmActivity">
 
-    <Button
-        android:id="@+id/end_button"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/alarmscreen" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/alarmtext_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="길게 눌러\n알람 끄기"
-        android:textSize="30sp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_clock"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#d4d2f8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/alarmtext"/>
+
+    <TextView
+        android:id="@+id/alarmtext"
+        android:layout_width="180dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="야 자냐?"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:fontFamily="@font/blackhansans"
+        app:layout_constraintBottom_toTopOf="@id/alarmtext_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/end_button"
+        android:layout_width="180dp"
+        android:layout_height="70dp"
+        android:text="알람 끄기"
+        android:textColor="@color/grey_letter_alarm"
+        android:textSize="25sp"
+        android:background="@drawable/alarmoff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="20dp"
+        android:text="길게 눌러서 알람을 꺼주세요"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/end_button"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
