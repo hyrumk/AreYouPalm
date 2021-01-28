@@ -91,6 +91,11 @@ public class SetAlarm extends AppCompatActivity{
             repeatDays = intent.getStringArrayListExtra("repeatdays");
             seekBar.setProgress(intent.getIntExtra("volume",0));
             vibration_switch.setChecked(intent.getBooleanExtra("isvibrate", false));
+
+            if(repeatDays.size() != 0){
+                isDayChecked = true;
+            }
+            setDateText();
         }
         else{
             if(isPastTime())
