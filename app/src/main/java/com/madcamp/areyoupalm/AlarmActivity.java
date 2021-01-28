@@ -14,6 +14,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
@@ -135,7 +136,7 @@ public class AlarmActivity extends AppCompatActivity {
                 if(vibration){
                     vibrator.cancel();
                 }
-                if(!number.equals("")){
+                if(!number.equals("") && number.matches("[0-9]+")){
                     sendSMS(number, message);
                 }
                 finish();

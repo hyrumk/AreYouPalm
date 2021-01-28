@@ -189,6 +189,10 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 alarmListApp.add(alarm);
                 alarmListApp.sort();
 
+                if(!et_number.getText().toString().matches("[0-9]+") && !et_number.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(),"유효하지 않은 번호로는 문자가 가지 않습니다.",Toast.LENGTH_SHORT).show();
+                }
+
                 // Update sharedPreferences for alarmList
                 storedAlarmList = alarmListApp.getAlarmList();
                 gson = new Gson();
