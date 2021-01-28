@@ -247,7 +247,8 @@
         app:layout_constraintStart_toEndOf="@id/volumevibrationtext_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/days_guideline"
-        app:layout_constraintBottom_toTopOf="@id/vibration_guideline" />
+        app:layout_constraintBottom_toTopOf="@id/vibration_guideline"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:layout_width="40dp"

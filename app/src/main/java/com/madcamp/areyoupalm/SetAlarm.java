@@ -202,7 +202,7 @@ public class SetAlarm extends AppCompatActivity implements CompoundButton.OnChec
                 AlarmHandler.setAlarm(getApplicationContext(), id, calendarToAlarm, repeatdays,
                         et_name.getText().toString(), et_number.getText().toString(), et_message.getText().toString(),
                         "music", seekBar.getProgress(), vibration_switch.isChecked());
-
+                Toast.makeText(getApplicationContext(),"알람이 설정되었습니다.",Toast.LENGTH_LONG).show();
                 finish();
             }
         });
