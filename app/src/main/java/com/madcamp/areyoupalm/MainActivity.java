@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
                 AlarmListApp alarmListApp = (AlarmListApp) getApplication();
                 ArrayList<Alarm> storedAlarmList = alarmListApp.getAlarmList();
-                alarmListApp.remove(storedAlarmList.get(position));
                 AlarmHandler.cancelAlarm(getApplicationContext(), storedAlarmList.get(position).id);
+                alarmListApp.remove(storedAlarmList.get(position));
                 Gson gson = new Gson();
                 String json = gson.toJson(storedAlarmList);
                 sharedPreferences.edit().putString(AlarmList_key, json).apply();
