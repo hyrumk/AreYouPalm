@@ -187,6 +187,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     Intent modifyAlarm = new Intent(mContext, SetAlarm.class);
                     modifyAlarm.putExtra("ismodifying",true);
                     int pos = getAdapterPosition();
+                    modifyAlarm.putExtra("id",alarmList.get(pos).id);
                     modifyAlarm.putExtra("year", alarmList.get(pos).year);
                     modifyAlarm.putExtra("month", alarmList.get(pos).month);
                     modifyAlarm.putExtra("date", alarmList.get(pos).date);

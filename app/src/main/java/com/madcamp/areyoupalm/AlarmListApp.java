@@ -39,6 +39,17 @@ public class AlarmListApp extends Application {
         }
     }
 
+    public void removeById(int id){
+        for (int i=0;i<alarmList.size();++i)
+        {
+            if (alarmList.get(i).id == id)
+            {
+                alarmList.remove(i);
+                break;
+            }
+        }
+    }
+
     public ArrayList<Alarm> getAlarmList(){
         return alarmList;
     }
