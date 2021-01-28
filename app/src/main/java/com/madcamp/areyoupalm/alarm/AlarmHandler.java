@@ -57,13 +57,16 @@ public class AlarmHandler {
 
         if(Arrays.asList(day_array).contains(true)){// 매주 반복하는 알람
             Calendar today = Calendar.getInstance();
+            today.add(Calendar.SECOND, 30); // Getting current time may be inaccurate at times, but since it's a crucial matter in setting the next alarm, this is a necessary adjustment.
+            Calendar target = Calendar.getInstance();
             int day; int add_day = -1; int iteration_check = -1;
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
-            calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, hour);
-            calendar.set(Calendar.MINUTE, minute);
-            if(calendar.before(today)){// 오늘 날짜에 대입한 알람 설정 일자가 현재 시각보다 이전인 경우
+            target.set(Calendar.HOUR_OF_DAY, hour);
+            target.set(Calendar.MINUTE, minute);
+            target.set(Calendar.SECOND,0);
+
+            if(target.before(today)){// 오늘 날짜에 대입한 알람 설정 일자가 현재 시각보다 이전인 경우
                 day = today.get(Calendar.DAY_OF_WEEK);// 가장 가까운 미래에 설정할 알람의 일자를 내일부터 check
                 if(day == 7){
                     day = 0;
@@ -99,7 +102,6 @@ public class AlarmHandler {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, today.getTimeInMillis(), pendingIntent);
         }
         else{// 반복하지 않는 특정 날짜 알람
-            Log.d("Tayg", String.valueOf(calendar.getTime()));
             calendar.set(Calendar.SECOND, 0);
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }

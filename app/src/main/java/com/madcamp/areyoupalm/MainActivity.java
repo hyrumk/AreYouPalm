@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String AlarmList_key = "AlarmList";
-        
+
         AlarmListApp alarmListApp = (AlarmListApp) getApplication();
         String AlarmListPreferences = sharedPreferences.getString(AlarmList_key,"");
         Gson gson = new Gson();
