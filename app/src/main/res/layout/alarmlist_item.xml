@@ -100,7 +100,7 @@
         android:text="TextView"
         android:textSize="20sp"
         android:fontFamily="@font/godomaum"
-        
+
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         app:layout_constraintEnd_toStartOf="@id/toggle1_guideline"
