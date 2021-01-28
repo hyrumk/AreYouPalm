@@ -4,72 +4,118 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="90dp">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/upper_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lower_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/time_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ampm_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/toggle1_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.77"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/toggle2_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.91"/>
 
     <TextView
         android:id="@+id/tx_am_pm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="36dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        android:fontFamily="@font/blackhansans"
+        android:textColor="@color/grey_letter"
+        app:layout_constraintStart_toEndOf="@id/ampm_guideline"
+        app:layout_constraintTop_toBottomOf="@id/upper_guideline"
+        app:layout_constraintBottom_toTopOf="@id/lower_guideline"/>
 
     <TextView
         android:id="@+id/tx_alarm_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="24dp"
         android:text="TextView"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp"
+        android:textColor="@color/grey_letter"
+        android:fontFamily="@font/dmsansr"
+        app:layout_constraintStart_toEndOf="@id/time_guideline"
+        app:layout_constraintTop_toBottomOf="@id/upper_guideline"
+        app:layout_constraintBottom_toTopOf="@id/lower_guideline"/>
 
     <TextView
         android:id="@+id/tx_alarm_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        android:fontFamily="@font/dmsansr"
+        app:layout_constraintStart_toEndOf="@id/ampm_guideline"
+        app:layout_constraintTop_toBottomOf="@id/lower_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/tx_alarm_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="284dp"
-        android:layout_marginLeft="284dp"
-        android:layout_marginTop="60dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/dmsansr"
+        app:layout_constraintEnd_toStartOf="@id/toggle2_guideline"
+        app:layout_constraintTop_toBottomOf="@id/lower_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/tx_repeat_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="84dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp"
+        android:fontFamily="@font/godomaum"
+        
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintEnd_toStartOf="@id/toggle1_guideline"
+        app:layout_constraintTop_toBottomOf="@id/upper_guideline"
+        app:layout_constraintBottom_toTopOf="@id/lower_guideline" />
 
     <Switch
         android:id="@+id/sw_activate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:theme="@style/SwitchTheme"
+        android:trackTint="#fc605f"
+        app:layout_constraintStart_toEndOf="@id/toggle1_guideline"
+        app:layout_constraintEnd_toStartOf="@id/toggle2_guideline"
+        app:layout_constraintTop_toBottomOf="@id/upper_guideline"
+        app:layout_constraintBottom_toTopOf="@id/lower_guideline"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

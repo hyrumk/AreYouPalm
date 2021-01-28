@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetAlarm">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day0_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.045"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day1_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.175"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day2_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.305"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day3_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.435"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day4_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.565"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day5_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.695"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day6_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.825"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/day7_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.955"/>
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalhalf_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/alarm_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/calendar_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/days_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vibration_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vibrationtext1_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.43"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vibrationtext2_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.47"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumebar_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.54"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumevibrationtext_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.28"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/textstart_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/textend_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumetext1_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.49"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/volumetext2_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/text_alarm_name_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.58"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/alarm_name_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.64"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/text_number_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.68"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/number_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/message_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92"/>
+
+
+
+
+
+    <TimePicker
+        android:id="@+id/alarm_time"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:timePickerMode="spinner"
+        android:theme="@style/Theme.Picker"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/alarm_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/bt_alarm_calender"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/calendar"
+        android:backgroundTint="#646464"
+        app:layout_constraintEnd_toStartOf= "@id/textend_guideline"
+        app:layout_constraintTop_toBottomOf="@id/alarm_guideline"
+        app:layout_constraintBottom_toTopOf="@id/calendar_guideline" />
+
+    <TextView
+        android:id="@+id/tx_alarm_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:fontFamily="@font/dmsansr"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/alarm_guideline"
+        app:layout_constraintBottom_toTopOf="@id/calendar_guideline"
+        app:layout_constraintEnd_toStartOf="@id/bt_alarm_calender"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sun_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="일"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day0_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day1_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/mon_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="월"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day1_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day2_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tue_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="화"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day2_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day3_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/wed_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="수"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day3_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day4_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/thu_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="목"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day4_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day5_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fri_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="금"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day5_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day6_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sat_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="@color/grey"
+        android:text="토"
+        android:textColor="@color/grey_letter"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/godomaum"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toEndOf="@id/day6_guideline"
+        app:layout_constraintEnd_toStartOf="@id/day7_guideline"
+        app:layout_constraintTop_toBottomOf="@id/calendar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/days_guideline"/>
+
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:text="진동"
+        android:fontFamily="@font/blackhansans"
+        android:gravity="center_vertical"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:autoSizeTextType="uniform"
+        android:layout_marginVertical="2dp"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/vibrationtext1_guideline"
+        app:layout_constraintBottom_toTopOf="@id/vibrationtext2_guideline"/>
+
+    <Switch
+        android:id="@+id/sw_vibration"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:theme="@style/SwitchTheme"
+        android:trackTint="#fc605f"
+        app:layout_constraintStart_toEndOf="@id/volumevibrationtext_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/days_guideline"
+        app:layout_constraintBottom_toTopOf="@id/vibration_guideline"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:text="볼륨"
+        android:fontFamily="@font/blackhansans"
+        android:gravity="center_vertical"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:autoSizeTextType="uniform"
+        android:layout_marginVertical="2dp"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/volumetext1_guideline"
+        app:layout_constraintBottom_toTopOf="@id/volumetext2_guideline"/>
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/volumebar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="40dp"
+        android:progressTint="#fc605f"
+        android:progressBackgroundTint="#D8D8D8"
+        android:thumbTint="#ececec"
+        app:layout_constraintStart_toEndOf="@id/volumevibrationtext_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vibration_guideline"
+        app:layout_constraintBottom_toTopOf="@id/volumebar_guideline"
+        />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:text="알람 이름"
+        android:fontFamily="@font/blackhansans"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="2dp"
+        android:textColor="#b9b9b9"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/volumebar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/text_alarm_name_guideline"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@+id/textstart_guideline"
+        app:layout_constraintEnd_toEndOf="@+id/textend_guideline"
+        app:layout_constraintTop_toBottomOf="@id/text_alarm_name_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/alarm_name_guideline">
+        <EditText
+            android:id="@+id/et_alarm_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#D0000000"
+            android:fontFamily="@font/dmsansr" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:text="번호 입력"
+        android:fontFamily="@font/blackhansans"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_vertical"
+        android:textColor="#b9b9b9"
+        android:layout_marginVertical="2dp"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/alarm_name_guideline"
+        app:layout_constraintBottom_toTopOf="@id/text_number_guideline"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@+id/textstart_guideline"
+        app:layout_constraintEnd_toEndOf="@+id/textend_guideline"
+        app:layout_constraintTop_toBottomOf="@id/text_number_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/number_guideline">
+        <EditText
+            android:id="@+id/et_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#D0000000"
+            android:fontFamily="@font/dmsansr"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/sms_message"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/message_border"
+        app:layout_constraintTop_toBottomOf="@id/number_guideline"
+        app:layout_constraintBottom_toTopOf="@id/message_guideline"
+        app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintEnd_toStartOf="@id/textend_guideline"
+        android:fontFamily="@font/godomaum"
+        android:textSize="30sp"
+        android:hint="메시지를 입력하세요"
+        android:padding="10dp"
+        android:gravity="top"/>
+
+    <Button
+        android:id="@+id/bt_cancel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="취소"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/blackhansans"
+        android:textColor="#646464"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/message_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textstart_guideline"
+        app:layout_constraintEnd_toStartOf="@id/verticalhalf_guideline">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColorHighlight="#148E13"
+        android:text="저장"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/blackhansans"
+        android:textColor="#fc605f"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/message_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textend_guideline"
+        app:layout_constraintStart_toEndOf="@id/verticalhalf_guideline">
+    </Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.AreYouPalm" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#D2FC605F</item>
+        <item name="colorPrimary">#A9C4E8</item>
         <item name="colorPrimaryVariant">#E1FC605F</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -25,4 +25,15 @@
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="android:colorControlActivated">#fc605f</item>
     </style>
+
+    <style name="Divider">
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="Divider.Horizontal" parent="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+
+    </style>
+
 </resources>
