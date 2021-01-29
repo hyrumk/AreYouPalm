@@ -17,9 +17,22 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 프로젝트에 필요한 프로가드 설정
+            proguardFile 'proguard-rules.pro'
+            // 디버그에 필요한 프로가드 설정
+            proguardFile 'proguard-debug.pro'
+        }
+
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            debuggable false
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFile 'proguard-rules.pro'
         }
     }
     compileOptions {
