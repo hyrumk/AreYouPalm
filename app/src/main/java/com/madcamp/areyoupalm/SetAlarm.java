@@ -239,7 +239,9 @@ public class SetAlarm extends AppCompatActivity{
                     repeatdays[6] = true;
                 }
 
-                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute, et_name.getText().toString(), et_number.getText().toString(), Arrays.asList(repeatdays).contains(true), repeatDays, et_message.getText().toString(), seekBar.getProgress(), vibration_switch.isChecked());
+                Alarm alarm = new Alarm(id, alarm_year, alarm_month, alarm_date, alarm_hour, alarm_minute,
+                                et_name.getText().toString(), et_number.getText().toString(), Arrays.asList(repeatdays).contains(true),
+                        repeatDays, et_message.getText().toString(), seekBar.getProgress(), vibration_switch.isChecked(), true);
 
                 if(alarmListApp.contains(alarm))
                     alarmListApp.remove(alarm);

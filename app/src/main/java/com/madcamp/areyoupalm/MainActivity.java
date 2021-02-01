@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition();
 
+                // update sharedPreferences
                 AlarmListApp alarmListApp = (AlarmListApp) getApplication();
                 ArrayList<Alarm> storedAlarmList = alarmListApp.getAlarmList();
                 AlarmHandler.cancelAlarm(getApplicationContext(), storedAlarmList.get(position).id);
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        // Call SharedPreferences of a list of alarms
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String AlarmList_key = "AlarmList";
 

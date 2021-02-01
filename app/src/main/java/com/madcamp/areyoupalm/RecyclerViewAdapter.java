@@ -2,7 +2,9 @@ package com.madcamp.areyoupalm;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.madcamp.areyoupalm.alarm.AlarmHandler;
 
 import java.nio.channels.CancelledKeyException;
@@ -121,8 +124,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         }
         holder.repeatDateView.setText(date_text);
-        if(curAlarm.isActive)
-            holder.activate.setChecked(true);
+        holder.activate.setChecked(curAlarm.isActive);
 
         holder.activate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -150,10 +152,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         repeatdays[6] = true;
 
                     AlarmHandler.setAlarm(mContext, curAlarm.id, cal, repeatdays, curAlarm.name, curAlarm.palmTag, curAlarm.message,"music", curAlarm.volume, curAlarm.isVibrate);
+                    curAlarm.isActive = true;
+
+                    SharedPreferences sharedPreferences = mContext.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                    String AlarmList_key = "AlarmList";
+                    Gson gson = new Gson();
+                    String json = gson.toJson(alarmList);
+                    sharedPreferences.edit().putString(AlarmList_key, json).apply();
+
                 }
                 else {
                     curAlarm.deactivate();
+                    curAlarm.isActive = false;
                     AlarmHandler.cancelAlarm(mContext, curAlarm.id);
+                    
+                    SharedPreferences sharedPreferences = mContext.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                    String AlarmList_key = "AlarmList";
+                    Gson gson = new Gson();
+                    String json = gson.toJson(alarmList);
+                    sharedPreferences.edit().putString(AlarmList_key, json).apply();
+
                 }
             }
         });

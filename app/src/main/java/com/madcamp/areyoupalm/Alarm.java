@@ -20,7 +20,7 @@ public class Alarm {
     int volume;
     boolean isVibrate;
 
-    Alarm(int id, int year, int month, int date, int hour, int minute, String name, String palmTag, boolean isRepeat, ArrayList<String> repeatDays, String message, int volume, boolean isVibrate){
+    Alarm(int id, int year, int month, int date, int hour, int minute, String name, String palmTag, boolean isRepeat, ArrayList<String> repeatDays, String message, int volume, boolean isVibrate, boolean isActive){
         this.id = id;
         this.year = year;
         this.month = month;
@@ -29,7 +29,7 @@ public class Alarm {
         this.minute = minute;
         this.name = name;
         this.palmTag = palmTag;
-        this.isActive = true;
+        this.isActive = isActive;
         this.isRepeat = isRepeat;
         this.repeatDays = repeatDays;
         this.message = message;
