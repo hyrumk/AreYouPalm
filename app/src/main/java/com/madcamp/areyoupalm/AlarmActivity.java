@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.madcamp.areyoupalm.alarm.AlarmHandler;
@@ -32,12 +33,13 @@ import java.util.Calendar;
 The Screen that will be displayed when the alarm rings
  */
 
-
+//<TODO> Enable alarm screen image customization
 
 public class AlarmActivity extends AppCompatActivity {
 
     boolean user_press = false;
     Button End_Button;
+    TextView Alarm_Name;
     MediaPlayer mp;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -60,7 +62,7 @@ public class AlarmActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_alarm);
-
+        Alarm_Name = findViewById(R.id.alarm_name_screen);
         End_Button = findViewById(R.id.end_button);
 
         //////////////// Sets next alarm when it's on a weekly basis ////////////////
@@ -77,6 +79,9 @@ public class AlarmActivity extends AppCompatActivity {
         int HOUR = intent.getIntExtra("HOUR_OF_DAY",0);
         int MINUTE = intent.getIntExtra("MINUTE", 0);
 
+        ///////////////////////// Set Alarm Name in textview /////////////////////////
+
+        Alarm_Name.setText(name);
 
         ///////////////////////// Music Related Settings ///////////////////////
         Log.d("VOLUME", String.valueOf(volume));

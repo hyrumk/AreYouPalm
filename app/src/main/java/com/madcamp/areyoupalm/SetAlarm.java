@@ -38,6 +38,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+//<TODO> Enable alarm music customization, alarm vibration customization
+// <TODO> Text limit in alarm name, message, number
+
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 public class SetAlarm extends AppCompatActivity{
 

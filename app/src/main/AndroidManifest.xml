@@ -25,7 +25,6 @@
             android:showOnLockScreen="true"
             android:screenOrientation="portrait"
             android:turnScreenOn="true"></activity>
-        <activity android:name=".SMSActivity"></activity>
         <activity
             android:name=".SetAlarm"
             android:screenOrientation="portrait"/>

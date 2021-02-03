@@ -29,6 +29,14 @@ import com.madcamp.areyoupalm.alarm.AlarmHandler;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+<TODO> Features we could add
+1. Give choices to users on which alarm to select (even from their own soundfiles)
+2. Make repeat possible
+3. Give a choice to give vibration when the alarm rings
+
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1001;
@@ -128,12 +136,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-
-/*
-<TODO> Features we could add
-1. Give choices to users on which alarm to select (even from their own soundfiles)
-2. Make repeat possible
-3. Give a choice to give vibration when the alarm rings
-
- */

@@ -165,7 +165,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     curAlarm.deactivate();
                     curAlarm.isActive = false;
                     AlarmHandler.cancelAlarm(mContext, curAlarm.id);
-                    
+
                     SharedPreferences sharedPreferences = mContext.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
                     String AlarmList_key = "AlarmList";
                     Gson gson = new Gson();
