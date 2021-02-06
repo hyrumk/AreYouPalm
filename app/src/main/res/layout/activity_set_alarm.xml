@@ -443,6 +443,17 @@
         app:layout_constraintTop_toBottomOf="@id/volumebar_guideline"
         app:layout_constraintBottom_toTopOf="@id/text_alarm_name_guideline"/>
 
+    <TextView
+        android:id="@+id/notice_name"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="2dp"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toStartOf="@id/textend_guideline"
+        app:layout_constraintTop_toBottomOf="@id/volumebar_guideline"
+        app:layout_constraintBottom_toTopOf="@id/text_alarm_name_guideline"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -456,7 +467,7 @@
             android:layout_height="wrap_content"
             android:textColor="#D0000000"
             android:fontFamily="@font/dmsansr"
-            android:maxLength="20"/>
+            android:maxLength="18"/>
     </LinearLayout>
 
     <TextView
@@ -472,6 +483,17 @@
         android:textColor="#b9b9b9"
         android:layout_marginVertical="2dp"
         app:layout_constraintStart_toEndOf="@id/textstart_guideline"
+        app:layout_constraintTop_toBottomOf="@id/alarm_name_guideline"
+        app:layout_constraintBottom_toTopOf="@id/text_number_guideline"/>
+
+    <TextView
+        android:id="@+id/notice_number"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="2dp"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toStartOf="@id/textend_guideline"
         app:layout_constraintTop_toBottomOf="@id/alarm_name_guideline"
         app:layout_constraintBottom_toTopOf="@id/text_number_guideline"/>
 

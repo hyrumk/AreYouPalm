@@ -15,6 +15,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +41,7 @@ import java.util.Collections;
 import java.util.List;
 
 //<TODO> Enable alarm music customization, alarm vibration customization
-// <TODO> Text limit in alarm name, message, number
+// <TODO> Text limit in message
 // <TODO> Add text limit notification on textview (red text) when it reaches the max length.
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 public class SetAlarm extends AppCompatActivity{
@@ -58,6 +60,7 @@ public class SetAlarm extends AppCompatActivity{
     EditText et_name;
     EditText et_number;
     EditText et_message;
+    TextView name_warning; TextView number_warning;
     AppCompatSeekBar seekBar;
     Switch vibration_switch;
     AppCompatButton btn_sun;AppCompatButton btn_mon;AppCompatButton btn_tue;AppCompatButton btn_wed;AppCompatButton btn_thu;AppCompatButton btn_fri;AppCompatButton btn_sat;
@@ -76,6 +79,8 @@ public class SetAlarm extends AppCompatActivity{
         et_message = (EditText) findViewById(R.id.sms_message);
         seekBar = (AppCompatSeekBar) findViewById(R.id.volumebar);
         vibration_switch = (Switch) findViewById(R.id.sw_vibration);
+        name_warning = findViewById(R.id.notice_name);
+        number_warning = findViewById(R.id.notice_number);
         seekBar.incrementProgressBy(1);
         seekBar.setMax(5);
 
@@ -457,12 +462,6 @@ public class SetAlarm extends AppCompatActivity{
                 setDateText();
             }
         });
-
-
-
-
-
-
 
 
     }

@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.73"/>
+        app:layout_constraintGuide_percent="0.74"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/alarmbuttonbottom_guideline"
@@ -131,7 +131,7 @@
         android:layout_height="0dp"
         android:text="알람 끄기"
         android:textColor="@color/grey_letter_alarm"
-        android:textSize="25sp"
+        android:textSize="21sp"
         android:background="@drawable/alarmoff"
         android:gravity="center"
         app:layout_constraintDimensionRatio="18:7"

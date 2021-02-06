@@ -11,4 +11,5 @@
     <color name="grey_letter">#656565</color>
     <color name="redon">#ff5c59</color>
     <color name="grey_letter_alarm">#373737</color>
+    <color name="red">#FF0000</color>
 </resources>
