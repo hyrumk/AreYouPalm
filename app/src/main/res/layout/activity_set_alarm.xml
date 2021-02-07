@@ -518,6 +518,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/message_border"
+        android:maxLength="300"
         app:layout_constraintTop_toBottomOf="@id/number_guideline"
         app:layout_constraintBottom_toTopOf="@id/message_guideline"
         app:layout_constraintStart_toEndOf="@id/textstart_guideline"
