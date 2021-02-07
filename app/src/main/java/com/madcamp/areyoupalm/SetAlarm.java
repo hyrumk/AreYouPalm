@@ -43,6 +43,7 @@ import java.util.List;
 //<TODO> Enable alarm music customization, alarm vibration customization
 // <TODO> Text limit in message
 // <TODO> Add text limit notification on textview (red text) when it reaches the max length.
+// <TODO> Auto search phone number when setting one
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 public class SetAlarm extends AppCompatActivity{
 
