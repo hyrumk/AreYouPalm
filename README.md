@@ -2,7 +2,7 @@
 ## 야 자냐? - 문자 보내주는 알람앱
 An alarm app that sends a text message to a designated person.
 
-<img src="app/src/main/res/drawable/AreYouPalm Icon.png" width="200" height="200">
+<img src="app/src/main/res/drawable/AreYouPalm Icon.png" width="100" height="100">
 
 <img src="app/src/main/res/drawable/AreYouPalm-1.jpg" width="200" height="400"> | <img src="app/src/main/res/drawable/AreYouPalm-2.jpg" width="200" height="400"> | <img src="app/src/main/res/drawable/AreYouPalm-3.jpg" width="200" height="400">
 
