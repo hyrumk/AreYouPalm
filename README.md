@@ -14,4 +14,3 @@ An alarm app that sends a text message to a designated person.
 
 주요 기능
 - 알람 끄기 실패시 문자를 보낼 상대 및 메시지 지정 가능
-
