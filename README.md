@@ -4,7 +4,7 @@ An alarm app that sends a text message to a designated person.
 
 <img src="app/src/main/res/drawable/AreYouPalm Icon.png" width="100" height="100">
 
-<img src="app/src/main/res/drawable/AreYouPalm-1.jpg" width="150" height="300"> | <img src="app/src/main/res/drawable/AreYouPalm-2.jpg" width="150" height="300"> | <img src="app/src/main/res/drawable/AreYouPalm-3.jpg" width="150" height="300">
+<img src="app/src/main/res/drawable/AreYouPalm-1.jpg" width="150" height="300"> |<img src="app/src/main/res/drawable/AreYouPalm-3.jpg" width="150" height="300">
 
 기본 기능
 - 알람
